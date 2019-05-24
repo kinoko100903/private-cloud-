@@ -1,4 +1,5 @@
 <template>
+<!-- 服务监控详情 -->
   <div class="serve">
     <el-header
       style="background-color: #f4f8fb;

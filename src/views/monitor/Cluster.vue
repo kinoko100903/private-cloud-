@@ -1,4 +1,5 @@
 <template>
+<!-- 集群监控 -->
   <div class="cluster">
     <el-header
       style="background-color: #f4f8fb;
@@ -121,7 +122,7 @@ export default {
     width: 33.3%;
     border-right: 1px dotted #c0c0c0;
   }
-  .container:nth-of-type(3) {
+  .container:nth-last-of-type() {
     border-right: none;
   }
 }

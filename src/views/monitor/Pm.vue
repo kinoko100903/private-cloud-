@@ -1,4 +1,5 @@
 <template>
+<!-- 物理机监控 -->
   <div class="Pm">
     <el-header
       style="background-color: #f4f8fb;

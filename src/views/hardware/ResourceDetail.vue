@@ -1,6 +1,6 @@
 <template>
-<!-- 物理机监控详情 -->
-  <div class="Pm">
+<!-- 物理机详情 -->
+  <div class="ResourceDetail">
     <el-header
       style="background-color: #f4f8fb;
     color: #4b62d2;
@@ -32,7 +32,6 @@
       <div class="left"></div>
       <div class="right">
         <div class="btnCon"></div>
-        <div class="container"></div>
         <div class="container"></div>
         <div class="container"></div>
         <div class="container"></div>
@@ -97,19 +96,22 @@ export default {
     box-shadow: 0px 3px 5px 0px rgba(112, 112, 112, 0.19);
     float: right;
     .btnCon {
-      width: 1489px;
-      height: 56px;
+      width: 1258px;
+      height: 40px;
       background: rgba(255, 255, 255, 1);
-      margin-left: 20px;
+      border-bottom: 1px solid #dedede;
     }
     .container {
-      width: 1489px;
-      height: 280px;
+      width: 1258px;
+      height: 240px;
       background: rgba(255, 255, 255, 1);
-      border: 1px solid rgba(227, 227, 227, 1);
+      border-bottom: 1px dotted #dedede;
       border-radius: 6px;
       margin-top: 20px;
       margin-left: 20px;
+    }
+    .container:nth-last-of-type() {
+      border-bottom: 0;
     }
   }
 }
