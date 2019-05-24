@@ -1,8 +1,22 @@
 <template>
   <div class="create-role">
-    <div class="createRole">
-      <p>创建角色</p>
-    </div>
+    <el-header
+      style="background-color: #f4f8fb;
+    color: #4b62d2;
+    font-weight: 600;
+    font-size: 17px;
+    border-bottom: 1px solid #C9C9C9;
+    line-height: 60px;"
+    >
+      <el-row>
+        <el-col :span="12">
+          <el-link type="primary" style="font-size: 16px; font-weight: 700">{{$route.meta.title}}</el-link>
+        </el-col>
+        <el-col :span="12">
+          <div class="grid-content-light"></div>
+        </el-col>
+      </el-row>
+    </el-header>
     <div class="rolecon">
       <!-- 创建角色表单 -->
       <div class="roleTable">
@@ -34,7 +48,12 @@
           </el-form-item>
           <el-form-item>
             <el-button @click="resetForm('ruleForm')" class="reset">重置</el-button>
-            <el-button type="primary" @click="submitForm('ruleForm')" class="submit">确定</el-button>
+            <el-button
+              type="primary"
+              @click="submitForm('ruleForm')"
+              class="submit"
+              v-no-more-click
+            >确定</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -80,6 +99,12 @@ export default {
         ],
         roleType: [
           { required: true, message: '请选择角色类型', trigger: 'change' }
+        ],
+        description: [
+          { required: true, message: '请填写活动形式', trigger: 'blur' }
+        ],
+        permissionId: [
+          { required: true, message: '请填写id', trigger: 'blur' }
         ]
       },
       roletree: [],
@@ -191,20 +216,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.createRole {
-  height: 60px;
-  background: rgba(244, 248, 251, 1);
-  box-sizing: border-box;
-  p {
-    height: 16px;
-    font-size: 16px;
-    font-family: FZLTZHK--GBK1-0;
-    font-weight: 600;
-    color: rgba(73, 100, 212, 1);
-    padding-left: 20px;
-    padding-top: 21px;
-  }
-}
 .roleTable {
   width: 378px;
   height: 928px;

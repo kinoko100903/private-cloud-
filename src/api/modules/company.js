@@ -17,5 +17,7 @@ export const company = {
   // 查询角色类型:
   selectRoleType: `${baseUrl()}/role/selectRoleType`,
   // 修改角色：
-  updateRole: `${baseUrl()}/role/updateRole`
+  updateRole: `${baseUrl()}/role/updateRole`,
+  // 查询用户子集权限：
+  getlevelPrivilege: `${baseUrl()}/permission/getlevelPrivilege`
 }

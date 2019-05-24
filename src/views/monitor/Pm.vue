@@ -1,8 +1,22 @@
 <template>
   <div class="Pm">
-    <div class="PhysicalMachine">
-      <p>物理机监控</p>
-    </div>
+    <el-header
+      style="background-color: #f4f8fb;
+    color: #4b62d2;
+    font-weight: 600;
+    font-size: 17px;
+    border-bottom: 1px solid #C9C9C9;
+    line-height: 60px;"
+    >
+      <el-row>
+        <el-col :span="12">
+          <el-link type="primary" style="font-size: 16px; font-weight: 700">{{$route.meta.title}}</el-link>
+        </el-col>
+        <el-col :span="12">
+          <div class="grid-content-light"></div>
+        </el-col>
+      </el-row>
+    </el-header>
     <!-- 搜索 -->
     <div style="margin-top: 15px;">
       <el-input placeholder="请输入" v-model="search" class="input-with-select input-all">
@@ -119,20 +133,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.PhysicalMachine {
-  height: 60px;
-  background: rgba(244, 248, 251, 1);
-  box-sizing: border-box;
-  p {
-    height: 16px;
-    font-size: 16px;
-    font-family: FZLTZHK--GBK1-0;
-    font-weight: 600;
-    color: rgba(73, 100, 212, 1);
-    padding-left: 20px;
-    padding-top: 21px;
-  }
-}
 .input-all {
   width: 398px;
   height: 36px;

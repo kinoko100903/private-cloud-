@@ -1,8 +1,22 @@
 <template>
   <div class="role">
-    <div class="RoleAuthority">
-      <p>角色权限</p>
-    </div>
+    <el-header
+      style="background-color: #f4f8fb;
+    color: #4b62d2;
+    font-weight: 600;
+    font-size: 17px;
+    border-bottom: 1px solid #C9C9C9;
+    line-height: 60px;"
+    >
+      <el-row>
+        <el-col :span="12">
+          <el-link type="primary" style="font-size: 16px; font-weight: 700">{{$route.meta.title}}</el-link>
+        </el-col>
+        <el-col :span="12">
+          <div class="grid-content-light"></div>
+        </el-col>
+      </el-row>
+    </el-header>
     <!-- 搜索 -->
     <div style="margin-top: 15px;">
       <el-input placeholder="请输入" v-model="search" class="input-with-select input-all">
@@ -70,7 +84,7 @@
         </div>
       </div>
     </div>
-    <el-dialog title="修改权限" :visible.sync="dialogTableVisible" :modal="false">
+    <el-dialog title="修改权限" :visible.sync="dialogTableVisible" :modal="false" width="520px">
       <div class="text">
         <p>
           角色名称：
@@ -101,6 +115,7 @@
           @click="dialogTableVisible = false"
           @click.native="handleSubmit"
           class="sure"
+          v-no-more-click
         >确 定</el-button>
       </div>
     </el-dialog>
@@ -160,11 +175,31 @@ export default {
       roleName0: '',
       dictName0: '',
       // 角色权限：
-      objItem: ''
+      objItem: '',
+      user: [],
+      userId: '',
+      permissionId: ''
     }
   },
   created () {
-
+    console.log(this.$utils.sessionStorage.getItem('user') || {}, 'user')
+    this.user = this.$utils.sessionStorage.getItem('user') || {}
+    this.userId = this.user.userID
+    console.log(this.userId, 'this.userId ')
+    console.log(this.user.roles[0].roleTypeId, 'user')
+    console.log(this.permissionId, 'id')
+    console.log(this.tableData, 'id1')
+    // 查询用户子级权限
+    this.axios({
+      url: this.$utils.api.company.getlevelPrivilege,
+      method: 'get',
+      params: {
+        userId: this.userId,
+        permissionId: this.user.roles[0].roleTypeId
+      }
+    }).then(res => {
+      console.log(res, '查询用户子级权限')
+    })
   },
   mounted () {
     this.handleChange()
@@ -314,20 +349,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.RoleAuthority {
-  height: 60px;
-  background: rgba(244, 248, 251, 1);
-  box-sizing: border-box;
-  p {
-    height: 16px;
-    font-size: 16px;
-    font-family: FZLTZHK--GBK1-0;
-    font-weight: 600;
-    color: rgba(73, 100, 212, 1);
-    padding-left: 20px;
-    padding-top: 21px;
-  }
-}
 .input-all {
   width: 398px;
   height: 36px;
@@ -408,7 +429,7 @@ export default {
   }
 }
 .role /deep/ .el-pagination__sizes {
-  margin: 0 1007px 0 0;
+  margin: 0 970px 0 0;
 }
 .role /deep/ .is-leaf {
   background: rgba(243, 247, 249, 1);
@@ -469,17 +490,17 @@ export default {
 }
 .treeText {
   color: #333;
-  margin-left: 70px;
+  margin-left: 37px;
   margin-top: 20px;
 }
 .tree {
-  width: 76%;
+  width: 70%;
   padding: 10px 10px;
   border: 1px dotted rgba(186, 186, 186, 1);
-  margin-left: 144px;
+  margin-left: 110px;
   margin-top: -20px;
 }
 .role /deep/.el-dialog__footer {
-  width: 883px;
+  width: 485px;
 }
 </style>
