@@ -1,0 +1,23 @@
+@font-face {
+  font-family: 'songregular';
+  src: url('../fonts/troila.woff2') format('woff2'),
+    url('../fonts/troila.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.f {
+  display: inline-block;
+  font: normal normal normal 14px/1 songregular;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.f.f-kj:before {
+  content: '\0041';
+}
+
+.f.f-gj:before {
+  content: '\0042';
+}
